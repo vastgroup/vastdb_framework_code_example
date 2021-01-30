@@ -53,3 +53,27 @@ vast-tools compare INCLUSION_LEVELS_FULL-mm10-4.tab \
 
 The summary output confirms a clear tendency: most regulated AS events are exons, especially microexons with length ≤ 27 nt that show higher inclusion in the control (108 vs. 0 for microexons and 52 vs. 9 for longer exons), consistent with the known role of Srrm4 enhancing inclusion of very short exons.
 ![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vasttools_compare_output.png)
+
+In addition to the descriptive tables, the run of ```vast-tools compare``` generates several useful output files, among them:
+1. **DiffAS**: The set of differentially regulated AS events with average ΔPSI in the last column
+```bash
+DiffAS-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.tab
+```
+2. **AS_NC**: AS events (10<PSI<90 in at least one group) that do not change (|ΔPSI| ≤ 5)
+```bash
+AS_NC-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI-Max_dPSI5.tab
+```
+3. **CS**: Constitutive exons (PSI > 95 in both groups) 
+```bash
+CS-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.tab
+```
+4. **CR**: Cryptic exons (PSI < 5 in both groups)
+```bash
+CR-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.tab
+```
+5. **GeneIDs** of cassette exons (AltEx) and background (BG) genes for GO analysis
+```bash
+AltEx-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.txt
+BG-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.txt
+```
+
