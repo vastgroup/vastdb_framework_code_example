@@ -17,4 +17,4 @@ To quantify *Srrm4* splicing with *vast-tools*, we download RNA-seq data for a k
 ```bash
 matt retr_rnaseq accessions_mouse.txt
 ```
-where [accessions_mouse.txt]() contains the GEO SRA IDs and sample names.
+where [accessions_mouse.txt](https://github.com/vastgroup/molbio2021_code_companion/blob/main/accessions_mouse.txt) contains the GEO SRA IDs and sample names.
