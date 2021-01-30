@@ -77,3 +77,5 @@ AltEx-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI
 BG-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.txt
 ```
 
+To perform a GO enrichment analysis, we upload the two Gene-ID lists to [David](https://david.ncifcrf.gov), download the chart results and plot the p-values (-log10) of the resulting categories as histograms.
+
