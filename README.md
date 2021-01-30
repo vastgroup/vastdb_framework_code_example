@@ -17,7 +17,7 @@ We see more expression profiles of interest in the *VastDB* Special Datasets sec
 
 #### 2. *vast-tools*: *Srrm4* splicing quantification and identification of *Srrm4* regulated exons
 
-To quantify *Srrm4* splicing and identify *Srrm4* regulated exons with *vast-tools*, we download RNA-seq data for a knockdown (KD) of *Srrm4* in neuroblastoma N2A cells (SRP041656), including two replicates for KD and control, using matt retr_rnaseq:
+To quantify *Srrm4* splicing and identify *Srrm4* regulated exons with *vast-tools*, we download RNA-seq data for a knockdown (KD) of *Srrm4* in neuroblastoma N2A cells (SRP041656), including two replicates for KD and control, using *Matt*:
 ```bash
 matt retr_rnaseq accessions_mouse.txt
 ```
