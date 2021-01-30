@@ -150,5 +150,5 @@ perl Get_Tissue_Specific_AS.pl PSI_TABLE-mm10.tab.gz \
       -test_tis Neural -min_rep 5
 ```
 With this information, we plot the ΔPSI per type of exon, which shows a very strong tendency for neurally upregulated exons among Srrm4-regulated exons.
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources_A.png)
 *Caption XXX*
