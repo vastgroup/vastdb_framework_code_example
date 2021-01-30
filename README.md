@@ -52,4 +52,4 @@ vast-tools compare INCLUSION_LEVELS_FULL-mm10-4.tab \
 ```
 
 The summary output confirms a clear tendency: most regulated AS events are exons, especially microexons with length ≤ 27 nt that show higher inclusion in the control (108 vs. 0 for microexons and 52 vs. 9 for longer exons), consistent with the known role of Srrm4 enhancing inclusion of very short exons.
-
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vasttools_compare_output.png)
