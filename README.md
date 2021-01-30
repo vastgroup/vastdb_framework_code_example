@@ -7,3 +7,5 @@ This document is a companion of the publication *Computational analysis of alter
 ##### 1. *VastDB*
 
 The *VastDB* Gene view page confirms the neural-specific expression of *Srrm4* across mouse cell and tissue types.
+
+![Image of Yaktocat](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vastdb_srrm4.png)
