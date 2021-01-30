@@ -151,4 +151,8 @@ perl Get_Tissue_Specific_AS.pl PSI_TABLE-mm10.tab.gz \
 ```
 With this information, we plot the ΔPSI per type of exon, which shows a very strong tendency for neurally upregulated exons among Srrm4-regulated exons.
 ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources_A.png)
-*Caption XXX*
+
+Next, we use the disorder information downloaded from *VastDB* and plot the average percentage of disorder residues for the alternative as well as the upstream (C1) and downstream (C2) exons for each exon set. As expected for tissue-specific exons, *Srrm4*-regulated exons more often encode disorder regions.
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources_B.png)
+However, some *Srrm4*-regulated microexons are also known to be inserted within structured domains, as exemplified by a 15-nt exon in *Vav2* with VastID [MmuEX0051282](https://vastdb.crg.eu/event/MmuEX0051282@mm10).
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources_C.png)
