@@ -9,11 +9,11 @@ This document is a companion of the publication *Computational analysis of alter
 The *VastDB* [Gene View Page of *Srrm4* in mouse](https://vastdb.crg.eu/gene/ENSMUSG00000063919@mm10) confirms the neural-specific expression of *Srrm4* across mouse cell and tissue types.
 
 ![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vastdb_srrm4.png)
-*Expression of mouse Srrm4 during differentiation of embryonic stem cells (ESC) to glutamatergic neurons, using the cRPKM metrics*
+*Expression of mouse Srrm4 during differentiation of embryonic stem cells (ESC) to glutamatergic neurons, using the cRPKM metrics.*
 
 We see more expression profiles of interest in the *VastDB* Special Datasets section of the *Srrm4* Gene View Page, e.g. *Neural differentiation time course* showing the temporal dynamics of *Srrm4* expression during neuronal differentiation.
 ![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vastdb_srrm4_special.png)
-*Expression of mouse Srrm4 during differentiation of embryonic stem cells (ESC) to glutamatergic neurons, using the cRPKM metrics. * 
+*Expression of mouse Srrm4 during differentiation of embryonic stem cells (ESC) to glutamatergic neurons, using the cRPKM metrics.* 
 
 #### 2. *vast-tools*: *Srrm4* splicing quantification and identification of *Srrm4* regulated exons
 
