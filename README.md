@@ -198,3 +198,6 @@ perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
       Exons_hg38-2-dPSI50.txt -main_folder hg38_mm10_output/ -print_out
 ```
 This provides us a richer output, with the percent of conservation 
+
+Moreover, with option `-print_out` *ExOrthist*  generates a list of orthologous exons, containing *Srrm4*-regulated exons in one or the two species (Conserved_exons-mm10-hg38.tab), with the following format:
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/exorthist_output.png)
