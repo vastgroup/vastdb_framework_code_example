@@ -156,3 +156,10 @@ Next, we use the disorder information downloaded from *VastDB* and plot the aver
 ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources_B.png)
 However, some *Srrm4*-regulated microexons are also known to be inserted within structured domains, as exemplified by a 15-nt exon in *Vav2* with VastID [MmuEX0051282](https://vastdb.crg.eu/event/MmuEX0051282@mm10).
 ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources_C.png)
+
+### 6. Use of *ExOrthist* for conservation analysis of exons
+Finally, we perform a conservation analysis using *ExOrthist*. We run *ExOrthist* `main.nf` for mouse and human, using default parameters for the short evolutionary distance range, adding all vast-tools exons, and using Ensembl 1-to-1 orthologs as gene orthogroups. 
+```bash
+nextflow main.nf
+```
+`main.nf` needs a Nextflow config file [params.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/params.config) specifying the location of the input files as well as the output folder; `hg38_mm10_output` in this example. Among other output files of interest, this folder contains the file [EX_clusters.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/EX_clusters.tab.gz) which contains all exon orthogroups between human and mouse.
