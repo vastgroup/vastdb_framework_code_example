@@ -114,4 +114,11 @@ Next, we use `matt get_vast` to extract from the vast-tools formatted table the 
 ```bash
 matt get_vast tmp.tab COORD FullCO COMPLEX LENGTH -gtf mm10.gtf > Matt_input_Srrm4_ex.tab
 ```
+Eventually, to extract exon related features and compare them among the four exon groups, we run `matt cmpr_exons` on the resulting input table (Matt_input_Srrm4_ex.tab):
+```bash
+matt cmpr_exons Matt_input_Srrm4_ex.tab START END SCAFFOLD STRAND GENEID \
+       mm10.gtf mm10.fasta Mmus 150 GROUP[Srrm4_DOWN,CR,AS_NC,CS] \
+       Matt_Srrm4_KD -notrbts -colors:red,white,lightgray,darkgray
+``` 
+The automatically generated PDF summary shows the main regulatory features known to be associated with Srrm4-regulated exons: weak 3′ splice sites but strong 5′ splice sites, as well as much smaller exon lengths.
 
