@@ -121,4 +121,18 @@ matt cmpr_exons Matt_input_Srrm4_ex.tab START END SCAFFOLD STRAND GENEID \
        Matt_Srrm4_KD -notrbts -colors:red,white,lightgray,darkgray
 ``` 
 The automatically generated PDF summary shows the main regulatory features known to be associated with Srrm4-regulated exons: weak 3′ splice sites but strong 5′ splice sites, as well as much smaller exon lengths.
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/matt_exon_length.png)
+*Example of a boxplot from matt cmpr_exons visualizing the much shorter length distribution of Srrm4-regulated exons compared to other exon sets.*
 
+Next, we want to investigate the enrichment of motifs associated with Srrm4-regulated exons. Since UGC motifs are known to be enriched in the upstream intron we use `matt rna_maps` to confirm this association. First, we need to create a table with motifs to be included in this analysis containing only the UGC motif.
+```bash
+echo -e 'TYPE\tNAME\tEXPR_FILE\tTHRESH\tBGMODEL\nREGEXP\tUGC\tTGC\tNA\tNA' > ugc_motif.tab
+```
+Then, we generate the RNA map with Matt:
+```bash
+matt rna_maps Matt_input_Srrm4_ex.tab UPSTRM_EX_BORDER START END \
+      DOSTRM_EX_BORDER SCAFFOLD STRAND GROUP 15 50 150 mm10.fasta \
+      ugc_motif.tab TYPE NAME EXPR_FILE THRESH BGMODEL \
+      -d UGC_map_Matt_Srrm4_KD
+```
+where 15 is the length of the sliding window, 50 and 150 are the number of exon and intron positions to be considered, respectively.
