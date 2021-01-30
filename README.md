@@ -136,3 +136,5 @@ matt rna_maps Matt_input_Srrm4_ex.tab UPSTRM_EX_BORDER START END \
       -d UGC_map_Matt_Srrm4_KD
 ```
 where 15 is the length of the sliding window, 50 and 150 are the number of exon and intron positions to be considered, respectively.
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/ugc_rna_map.png)
+*RNA map for the UGC motif. The motif is strongly enriched in a window from approx. -30 to -5 upstream of Srrm4-regulated exons, but not in other exons.*
