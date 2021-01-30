@@ -13,7 +13,7 @@ The *VastDB* [Gene View Page of *Srrm4* in mouse](https://vastdb.crg.eu/gene/ENS
 
 #### 2. *vast-tools*
 
-To quantify *Srrm4* splicing with *vast-tools*, we download RNA-seq data for a knockdown (KD) of *Srrm4* in neuroblastoma N2A cells (SRP041656), including two replicates for KD and control, using matt retr_rnaseq:
+To quantify *Srrm4* splicing and identify *Srrm4* regulated exons with *vast-tools*, we download RNA-seq data for a knockdown (KD) of *Srrm4* in neuroblastoma N2A cells (SRP041656), including two replicates for KD and control, using matt retr_rnaseq:
 ```bash
 matt retr_rnaseq accessions_mouse.txt
 ```
