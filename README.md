@@ -163,3 +163,38 @@ Finally, we perform a conservation analysis using *ExOrthist*. We run *ExOrthist
 nextflow main.nf
 ```
 `main.nf` needs a Nextflow config file [params.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/params.config) specifying the location of the input files as well as the output folder; `hg38_mm10_output` in this example. Among other output files of interest, this folder contains the file [EX_clusters.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/EX_clusters.tab.gz) which contains all exon orthogroups between human and mouse.
+
+Next, we perform two types of analysis with `compare_exon_sets.pl`: 
+1. genome conservation of each mouse exon set in human
+2. evolutionary conservation of human and mouse Srrm4-regulated exons
+
+From the first comparison, using a single list, we obtain:
+```bash
+perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 
+     -exon_list_sp1 Exons_mm10-Srrm4_KD.txt \ 
+     -main_folder hg38_mm10_output/
+```
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/exorthist_tab1.png)
+Among other statistics, the percentage of exons with an exon ortholog in human, for those genes with 1-to-1 orthologs is 89%. 
+
+We then run similar analyses for each exon set (non-changing, constitutive, cryptic), and plot the percentage of genome conservation in human, showing a much higher conservation of Srrm4-regulated exons compared to non-regulated alternative exons.
+```bash
+perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
+      -exon_list_sp1 Exons_mm10-AS_NC.txt -main_folder hg38_mm10_output/
+
+perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
+      -exon_list_sp1 Exons_mm10-CS.txt -main_folder hg38_mm10_output/
+
+perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
+      -exon_list_sp1 Exons_mm10-CR.txt -main_folder hg38_mm10_output/
+```
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/exorthist_fig1.png)
+*Genome conservation between human and mouse for various exon sets.*
+
+To assess the regulatory conservation of *Srrm4*-regulated exons between mouse and human, and identify ortholog exons regulated in both species, we utilize `compare_exon_sets.pl` for two lists. The second list, *Srmm4*-regulated exons, was obtained by analzying with vast-tools an RNA-seq dataset with SRRM4 or GFP (as control) ectopically expressed in HEK293 cells.
+```bash
+perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
+      -exon_list_sp1 Exons_mm10-4-dPSI25.txt -exon_list_sp2 \
+      Exons_hg38-2-dPSI50.txt -main_folder hg38_mm10_output/ -print_out
+```
+This provides us a richer output, with the percent of conservation 
