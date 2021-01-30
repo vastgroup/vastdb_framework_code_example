@@ -77,5 +77,6 @@ AltEx-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI
 BG-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.txt
 ```
 
-To perform a GO enrichment analysis, we upload the two Gene-ID lists to [David](https://david.ncifcrf.gov), download the chart results and plot the p-values (-log10) of the resulting categories as histograms.
-
+To perform a GO enrichment analysis, we upload the two Gene-ID lists to [DAVID](https://david.ncifcrf.gov), download the chart results and plot the p-values (-log10) of the resulting categories as histograms.
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/GOTEA_srrm4.png)
+*Gene Ontology enrichment analyses using DAVID.* 
