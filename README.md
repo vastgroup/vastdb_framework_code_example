@@ -83,3 +83,35 @@ To perform a GO enrichment analysis, we upload the two Gene-ID lists to [DAVID](
 *Gene Ontology enrichment analysis using DAVID.* 
 
 ### 4. *Matt*: Identifying potential genomic and sequence features associated with Srrm4 regulation
+
+To identify potential genomic and sequence features associated with Srrm4-regulated exons we will use *Matt*. 
+To prepare the input table where we would need to gather all exon test to be compared together with a column GROUP with exon group IDs, we apply Matt's table manipulation commands (add_val, rand_rows, add_rows and get_rows). To extract from the *vast-tools* table exon AS events only, we exploit ` grep -P "(MmuEX|EVENT)"` and to keep the data set at a reasonable size, we randomly down-sample 1000 non-changing, constitutive, and cryptic exons.
+
+```bash
+matt add_val AS_NC-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI-Max_dPSI5.tab GROUP AS_NC \
+    | grep -P "(MmuEX|EVENT)" \
+    | matt rand_rows - 1000 > tmp.tab
+
+matt add_val CR-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.tab GROUP CR \
+    | grep -P "(MmuEX|EVENT)" \
+    | matt rand_rows - 1000\
+    | matt add_rows tmp.tab -
+
+matt add_val CS-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.tab GROUP CS \
+    | grep -P "(MmuEX|EVENT)" \
+    | matt rand_rows - 1000  \
+    | matt add_rows tmp.tab -
+
+matt get_rows DiffAS-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.tab dPSI[-100,-15] \
+    | matt add_val - GROUP Srrm4_DOWN \
+    | grep -P "(MmuEX|EVENT)" \
+    | matt add_rows tmp.tab -
+```
+
+The table `tmp.tab` contains exons (i.e. MmuEX) downregulated by Srrm4 KD, and up to 1000 random constitutive exons, non-regulated alternative exons and cryptic exons. 
+
+Next, we use `matt get_vast` to extract from the vast-tools formatted table the relevant genomic information (chromosome, start and end coordinates and strand):
+```bash
+matt get_vast tmp.tab COORD FullCO COMPLEX LENGTH -gtf mm10.gtf > Matt_input_Srrm4_ex.tab
+```
+
