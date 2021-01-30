@@ -18,3 +18,14 @@ To quantify *Srrm4* splicing and identify *Srrm4* regulated exons with *vast-too
 matt retr_rnaseq accessions_mouse.txt
 ```
 where [accessions_mouse.txt](https://github.com/vastgroup/molbio2021_code_companion/blob/main/accessions_mouse.txt) contains the GEO SRA IDs and sample names.
+
+We use vast-tools align to process each RNA-seq sample separately.
+```bash
+vast-tools align CL_N2A_Cont_a_R1.fq.gz CL_N2A_Cont_a_R2.fq.gz  -sp mm10 -o vast_out/mm10/MMB --expr  --IR_version 2 -c 8 -n CL_N2A_Cont_a 
+
+vast-tools align CL_N2A_Cont_b_R1.fq.gz CL_N2A_Cont_b_R2.fq.gz  -sp mm10 -o vast_out/mm10/MMB --expr  --IR_version 2 -c 8 -n CL_N2A_Cont_b 
+
+vast-tools align CL_N2A_Srrm34_KD_a_R1.fq.gz CL_N2A_Srrm34_KD_a_R2.fq.gz  -sp mm10 -o vast_out/mm10/MMB --expr  --IR_version 2 -c 8 -n CL_N2A_Srrm34_KD_a 
+
+vast-tools align CL_N2A_Srrm34_KD_b_R1-153.fq.gz CL_N2A_Srrm34_KD_b_R2.fq.gz  -sp mm10 -o vast_out/mm10/MMB --expr  --IR_version 2 -c 8 -n CL_N2A_Srrm34_KD_b 
+```
