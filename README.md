@@ -34,7 +34,22 @@ vast-tools align CL_N2A_Srrm34_KD_a_R1.fq.gz CL_N2A_Srrm34_KD_a_R2.fq.gz  -sp mm
 vast-tools align CL_N2A_Srrm34_KD_b_R1-153.fq.gz CL_N2A_Srrm34_KD_b_R2.fq.gz  -sp mm10 -o vast_out/mm10/MMB --expr  --IR_version 2 -c 8 -n CL_N2A_Srrm34_KD_b 
 ```
 
-Afterwards, we combine the results of the four datasets and generate a single table with PSIs for each sample
+Afterwards, we combine the results of the four datasets and generate a single results table, called INCLUSION table, with PSIs for each sample
 ```bash
 vast-tools combine -sp mm10 -o vast_out/mm10/MMB
 ```
+
+Inside the central output directory we apply ```vast-tools compare``` to the INCLUSION table to extract the differentially regulated AS events, here with thresholds |ΔPSI| ≥ 25 and minimum range ≥ 5, as well as lists of gene IDs to perform Gene Ontology analyses and of control AS events for later Matt analyses:
+```bash
+cd vast_out/mm10/MMB
+
+vast-tools compare INCLUSION_LEVELS_FULL-mm10-4.tab \ 
+   -a CL_N2A_Srrm4_Cont_a,CL_N2A_Srrm4_Cont_b \
+   -b CL_N2A_Srrm4_KD_a,CL_N2A_Srrm4_KD_b \ 
+   --print_dPSI --GO -sp mm10 --print_sets \ 
+   --min_dPSI 25 --min_range 5 \
+   -name_A Control -name_B Srrm4_KD \
+```
+
+The summary output confirms a clear tendency: most regulated AS events are exons, especially microexons with length ≤ 27 nt that show higher inclusion in the control (108 vs. 0 for microexons and 52 vs. 9 for longer exons), consistent with the known role of Srrm4 enhancing inclusion of very short exons.
+
