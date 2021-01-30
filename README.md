@@ -6,6 +6,7 @@ This document is a companion of the publication *Computational analysis of alter
 
 ##### 1. *VastDB*
 
-The *VastDB* [Gene View Page of *Srrm4*](https://vastdb.crg.eu/gene/ENSG00000139767@hg38) confirms the neural-specific expression of *Srrm4* across mouse cell and tissue types.
+The *VastDB* [Gene View Page of *Srrm4* in mouse](https://vastdb.crg.eu/gene/ENSMUSG00000063919@mm10) confirms the neural-specific expression of *Srrm4* across mouse cell and tissue types.
 
-![Image of Yaktocat](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vastdb_srrm4.png)
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vastdb_srrm4.png)
+*Expression of mouse Srrm4 during differentiation of embryonic stem cells (ESC) to glutamatergic neurons, using the cRPKM metrics*
