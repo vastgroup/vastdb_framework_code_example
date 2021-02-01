@@ -7,6 +7,14 @@ This document is a companion of the publication *Computational analysis of alter
 
 This tutorial leads the reader through the code example of Section 6: **The identification of microexons as the main targets of the splicing factor *Srrm4***.
 
+### Table of contents
+* [1. *VastDB*: *Srrm4* expression across different cell and tissue types](#1-vastdb-srrm4-expression-across-different-cell-and-tissue-types)  
+* [2. *vast-tools*: *Srrm4* splicing quantification and identification of *Srrm4* regulated exons](#2-vast-tools-srrm4-splicing-quantification-and-identification-of-srrm4-regulated-exons)  
+* [3. GO-term enrichment analysis using gene-id lists provided by *vast-tools*](#3-go-term-enrichment-analysis-using-gene-id-lists-provided-by-vast-tools)  
+* [4. *Matt*: Identifying potential genomic and sequence features associated with Srrm4 regulation](4-matt-identifying-potential-genomic-and-sequence-features-associated-with-srrm4-regulation)  
+* [5. Use of *VastDB* resources to identify tissue specific AS events](5-use-of-vastdb-resources-to-identify-tissue-specific-as-events)  
+* [6. Use of *ExOrthist* for conservation analysis of exons](6-use-of-ExOrthist-for-conservation-analysis-of-exons)  
+
 ### 1. *VastDB*: *Srrm4* expression across different cell and tissue types
 
 The *VastDB* [Gene View Page of *Srrm4* in mouse](https://vastdb.crg.eu/gene/ENSMUSG00000063919@mm10) confirms the neural-specific expression of *Srrm4* across mouse cell and tissue types.
@@ -152,8 +160,8 @@ perl Get_Tissue_Specific_AS.pl PSI_TABLE-mm10.tab.gz \
       -g Config_Neural.txt -min_N 2 \ 
       -test_tis Neural -min_rep 5
 ```
-With this information, we plot the ΔPSI per type of exon, which shows a very strong tendency for neurally upregulated exons among Srrm4-regulated exons.
-<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_A.png" width="200" height="200" />
+With this information, we plot the ΔPSI per type of exon, which shows a very strong tendency for neurally upregulated exons among Srrm4-regulated exons.  
+<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_A.png" width="500" height="500" />
 <!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_A.png) -->
 
 Next, we use the disorder information downloaded from *VastDB* and plot the average percentage of disorder residues for the alternative as well as the upstream (C1) and downstream (C2) exons for each exon set. As expected for tissue-specific exons, *Srrm4*-regulated exons more often encode disorder regions.
