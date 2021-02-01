@@ -224,9 +224,9 @@ perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
       Exons_hg38-2-dPSI50.txt -main_folder hg38_mm10_output/ -print_out
 ```
 This provides us a richer output about the percent of conservation at the gene level:
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_1.png =600x350)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_1.png)
 and at the exon level:
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_2.png =900x300)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_2.png)
 
 Moreover, with the option `-print_out`, `compare_exon_sets.pl` generates a text file with all the exon orthogroups (i.e. clusters of conserved exons between human and mouse) containing Srrm4-regulated exons for either one or both species. The format of the output file (`Conserved_exons-mm10-hg38.tab`) is the following:  
 
