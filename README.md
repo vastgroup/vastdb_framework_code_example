@@ -96,11 +96,12 @@ To perform a GO enrichment analysis, we upload the two Gene-ID lists generated b
 <img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/GOTEA_srrm4.png" width=600 height=700 />  
 <!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/GOTEA_srrm4.png) -->  
 
-*Gene Ontology enrichment analysis using DAVID.* 
+*Gene Ontology enrichment analyses using DAVID for genes containing exons that are differentially regulated upon Srrm4 KD. * 
 
 ### 4. *Matt*: Identifying potential genomic and sequence features associated with Srrm4 regulation
 
-We then use *Matt* to identify potential genomic and sequence features associated with Srrm4-regulated exons. We apply *Matt*'s table manipulation commands (`add_val`, `rand_rows`, `add_rows` and `get_rows`) to prepare the input table containing all the exons to be compared together with the relative group ID (reported in the column GROUP). We exploit ` grep -P "(MmuEX|EVENT)"` to selectively extract exon AS events from the *vast-tools* table, and we randomly down-sample 1000 non-changing, constitutive, and cryptic exons in order to preserve a reasonable dataset size.  
+We then use *Matt* to identify potential genomic and sequence features associated with Srrm4-regulated exons. The [mm10.gtf.gz](http://vastdb.crg.eu/FRAMEWORK/mm10.gtf.gz) and [mm10.fasta.gz](http://vastdb.crg.eu/FRAMEWORK/mm10.fasta.gz) files required by this analysis can be downloaded from the relative link.  
+We first apply *Matt*'s table manipulation commands (`add_val`, `rand_rows`, `add_rows` and `get_rows`) to prepare the input table containing all the exons to be compared together with the relative group ID (reported in the column GROUP). We exploit ` grep -P "(MmuEX|EVENT)"` to selectively extract exon AS events from the *vast-tools* table, and we randomly down-sample 1000 non-changing, constitutive, and cryptic exons in order to preserve a reasonable dataset size.  
 
 ```bash
 matt add_val AS_NC-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI-Max_dPSI5.tab GROUP AS_NC \
@@ -125,11 +126,11 @@ matt get_rows DiffAS-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srr
 
 The table `tmp.tab` contains exons (i.e. MmuEX) downregulated by Srrm4 KD, and up to 1000 random constitutive exons, non-regulated alternative exons and cryptic exons. 
 
-Next, we use `matt get_vast` to extract the relevant genomic information (chromosome, start and end coordinates and strand) from the vast-tools formatted table:  
+Next, we use `matt get_vast` to extract the relevant genomic information (chromosome, start and end coordinates and strand) from the vast-tools formatted table: 
 ```bash
 matt get_vast tmp.tab COORD FullCO COMPLEX LENGTH -gtf mm10.gtf > Matt_input_Srrm4_ex.tab
 ```
-Eventually, we run `matt cmpr_exons` on the resulting input table (Matt_input_Srrm4_ex.tab) to extract exon related features and compare them among the four exon groups:  
+Eventually, we run `matt cmpr_exons` on the resulting input table (Matt_input_Srrm4_ex.tab) to extract exon related features and compare them among the four exon groups: 
 ```bash
 matt cmpr_exons Matt_input_Srrm4_ex.tab START END SCAFFOLD STRAND GENEID \
        mm10.gtf mm10.fasta Mmus 150 GROUP[Srrm4_DOWN,CR,AS_NC,CS] \
