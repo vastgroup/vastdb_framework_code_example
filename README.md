@@ -91,8 +91,9 @@ BG-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.tx
 ### 3. GO-term enrichment analysis using gene-id lists provided by *vast-tools*
 To perform a GO enrichment analysis, we upload the two Gene-ID lists to [DAVID](https://david.ncifcrf.gov), download the chart results and plot the p-values (-log10) of the resulting categories as histograms. The found GO terms reveal enrichment in gene functions associated with GTPase regulation, synaptic organization and cytoskeleton, as previously described for *Srrm4*.  
 
-<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/GOTEA_srrm4.png" width=550 height=700 />   
-<!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/GOTEA_srrm4.png) -->
+<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/GOTEA_srrm4.png" width=600 height=700 />  
+<!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/GOTEA_srrm4.png) -->  
+
 *Gene Ontology enrichment analysis using DAVID.* 
 
 ### 4. *Matt*: Identifying potential genomic and sequence features associated with Srrm4 regulation
@@ -169,9 +170,10 @@ With this information, we plot the ΔPSI per type of exon, which shows a very st
 
 Next, we use the disorder information downloaded from *VastDB* and plot the average percentage of disorder residues for the alternative as well as the upstream (C1) and downstream (C2) exons for each exon set. As expected for tissue-specific exons, *Srrm4*-regulated exons more often encode disorder regions.  
 
-<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_B.png" width="700" height="500" />  
+<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_B.png" width="600" height="500" />  
 <!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_B.png) -->
-However, some *Srrm4*-regulated microexons are also known to be inserted within structured domains, as exemplified by a 15-nt exon in *Vav2* with VastID [MmuEX0051282](https://vastdb.crg.eu/event/MmuEX0051282@mm10).
+However, some *Srrm4*-regulated microexons are also known to be inserted within structured domains, as exemplified by a 15-nt exon in *Vav2* with VastID [MmuEX0051282](https://vastdb.crg.eu/event/MmuEX0051282@mm10).  
+
 ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_C.png)
 
 ### 6. Use of *ExOrthist* for conservation analysis of exons
@@ -206,7 +208,7 @@ perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
       -exon_list_sp1 Exons_mm10-CR.txt -main_folder hg38_mm10_output/
 ```  
 
-<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_fig1.png" width="500" height="500" />    
+<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_fig1.png" width="600" height="500" />    
 <!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_fig1.png) -->
 *Genome conservation between human and mouse for various exon sets.*
 
