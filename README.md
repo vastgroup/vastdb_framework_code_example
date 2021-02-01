@@ -8,11 +8,11 @@ This document is a companion of the publication *Computational analysis of alter
 
 The *VastDB* [Gene View Page of *Srrm4* in mouse](https://vastdb.crg.eu/gene/ENSMUSG00000063919@mm10) confirms the neural-specific expression of *Srrm4* across mouse cell and tissue types.
 
-![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vastdb_srrm4.png)
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/Figures/vastdb_srrm4.png)
 *Expression of mouse Srrm4 during differentiation of embryonic stem cells (ESC) to glutamatergic neurons, using the cRPKM metrics.*
 
 We see more expression profiles of interest in the *VastDB* Special Datasets section of the *Srrm4* Gene View Page, e.g. *Neural differentiation time course* showing the temporal dynamics of *Srrm4* expression during neuronal differentiation.
-![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vastdb_srrm4_special.png)
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/Figures/Figures/vastdb_srrm4_special.png)
 *Expression of mouse Srrm4 during differentiation of embryonic stem cells (ESC) to glutamatergic neurons, using the cRPKM metrics.* 
 
 ### 2. *vast-tools*: *Srrm4* splicing quantification and identification of *Srrm4* regulated exons
@@ -21,7 +21,7 @@ To quantify *Srrm4* splicing and identify *Srrm4* regulated exons with *vast-too
 ```bash
 matt retr_rnaseq accessions_mouse.txt
 ```
-where [accessions_mouse.txt](https://github.com/vastgroup/molbio2021_code_companion/blob/main/accessions_mouse.txt) contains the GEO SRA IDs and sample names.
+where [accessions_mouse.txt](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vast-tool_files/accessions_mouse.txt) contains the GEO SRA IDs and sample names.
 
 We use vast-tools align to process each RNA-seq sample separately with respect to the mouse mm10 transcriptome and specifying `vast_out/mm10/MMB` as the central output directory
 ```bash
@@ -52,7 +52,7 @@ vast-tools compare INCLUSION_LEVELS_FULL-mm10-4.tab \
 ```
 
 The summary output confirms a clear tendency: most regulated AS events are exons, especially microexons with length ≤ 27 nt that show higher inclusion in the control (108 vs. 0 for microexons and 52 vs. 9 for longer exons), consistent with the known role of Srrm4 enhancing inclusion of very short exons.
-![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/vasttools_compare_output.png)
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/Figures/vasttools_compare_output.png)
 
 In addition to the descriptive tables, the run of ```vast-tools compare``` generates several useful output files, among them:
 1. **DiffAS**: The set of differentially regulated AS events with average ΔPSI in the last column
@@ -79,7 +79,7 @@ BG-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI.tx
 
 ### 3. GO-term enrichment analysis using gene-id lists provided by *vast-tools*
 To perform a GO enrichment analysis, we upload the two Gene-ID lists to [DAVID](https://david.ncifcrf.gov), download the chart results and plot the p-values (-log10) of the resulting categories as histograms. The found GO terms reveal enrichment in gene functions associated with GTPase regulation, synaptic organization and cytoskeleton, as previously described for *Srrm4*.
-![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/GOTEA_srrm4.png)
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/Figures/GOTEA_srrm4.png)
 *Gene Ontology enrichment analysis using DAVID.* 
 
 ### 4. *Matt*: Identifying potential genomic and sequence features associated with Srrm4 regulation
@@ -121,7 +121,7 @@ matt cmpr_exons Matt_input_Srrm4_ex.tab START END SCAFFOLD STRAND GENEID \
        Matt_Srrm4_KD -notrbts -colors:red,white,lightgray,darkgray
 ``` 
 The automatically generated PDF summary shows the main regulatory features known to be associated with Srrm4-regulated exons: weak 3′ splice sites but strong 5′ splice sites, as well as much smaller exon lengths.
-![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/matt_exon_length.png)
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/Figures/matt_exon_length.png)
 *Example of a boxplot from matt cmpr_exons visualizing the much shorter length distribution of Srrm4-regulated exons compared to other exon sets.*
 
 Next, we want to investigate the enrichment of motifs associated with Srrm4-regulated exons. Since UGC motifs are known to be enriched in the upstream intron we use `matt rna_maps` to confirm this association. First, we need to create a table with motifs to be included in this analysis containing only the UGC motif.
@@ -136,7 +136,7 @@ matt rna_maps Matt_input_Srrm4_ex.tab UPSTRM_EX_BORDER START END \
       -d UGC_map_Matt_Srrm4_KD
 ```
 where 15 is the length of the sliding window, 50 and 150 are the number of exon and intron positions to be considered, respectively.
-![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/ugc_rna_map.png)
+![](https://github.com/vastgroup/molbio2021_code_companion/blob/main/Figures/ugc_rna_map.png)
 *RNA map for the UGC motif. The motif is strongly enriched in a window from approx. -30 to -5 upstream of Srrm4-regulated exons, but not in other exons.*
 
 ### 5. Use of *VastDB* resources to identify tissue specific AS events
@@ -150,19 +150,19 @@ perl Get_Tissue_Specific_AS.pl PSI_TABLE-mm10.tab.gz \
       -test_tis Neural -min_rep 5
 ```
 With this information, we plot the ΔPSI per type of exon, which shows a very strong tendency for neurally upregulated exons among Srrm4-regulated exons.
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources_A.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_A.png)
 
 Next, we use the disorder information downloaded from *VastDB* and plot the average percentage of disorder residues for the alternative as well as the upstream (C1) and downstream (C2) exons for each exon set. As expected for tissue-specific exons, *Srrm4*-regulated exons more often encode disorder regions.
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources_B.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_B.png)
 However, some *Srrm4*-regulated microexons are also known to be inserted within structured domains, as exemplified by a 15-nt exon in *Vav2* with VastID [MmuEX0051282](https://vastdb.crg.eu/event/MmuEX0051282@mm10).
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vastbd_resources_C.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_C.png)
 
 ### 6. Use of *ExOrthist* for conservation analysis of exons
 Finally, we perform a conservation analysis using *ExOrthist*. We run *ExOrthist* `main.nf` for mouse and human, using default parameters for the short evolutionary distance range, adding all vast-tools exons, and using Ensembl 1-to-1 orthologs as gene orthogroups. 
 ```bash
 nextflow main.nf
 ```
-`main.nf` needs a Nextflow config file [params.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/params.config) specifying the location of the input files as well as the output folder; `hg38_mm10_output` in this example. Among other output files of interest, this folder contains the file [EX_clusters.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/EX_clusters.tab.gz) which contains all exon orthogroups between human and mouse.
+`main.nf` needs a Nextflow config file [params.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/params.config) specifying the location of the input files as well as the output folder; `hg38_mm10_output` in this example. Among other output files of interest, this folder contains the file [EX_clusters.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/EX_clusters.tab.gz) which contains all exon orthogroups between human and mouse.
 
 Next, we perform two types of analysis with `compare_exon_sets.pl`: 
 1. genome conservation of each mouse exon set in human
@@ -174,7 +174,7 @@ perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38
      -exon_list_sp1 Exons_mm10-Srrm4_KD.txt \ 
      -main_folder hg38_mm10_output/
 ```
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/exorthist_tab1.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab1.png)
 Among other statistics, the percentage of exons with an exon ortholog in human, for those genes with 1-to-1 orthologs is 89%. 
 
 We then run similar analyses for each exon set (non-changing, constitutive, cryptic), and plot the percentage of genome conservation in human, showing a much higher conservation of Srrm4-regulated exons compared to non-regulated alternative exons.
@@ -188,7 +188,7 @@ perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
 perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
       -exon_list_sp1 Exons_mm10-CR.txt -main_folder hg38_mm10_output/
 ```
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/exorthist_fig1.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_fig1.png)
 *Genome conservation between human and mouse for various exon sets.*
 
 To assess the regulatory conservation of *Srrm4*-regulated exons between mouse and human, and identify ortholog exons regulated in both species, we utilize `compare_exon_sets.pl` for two lists. The second list, *Srmm4*-regulated exons, was obtained by analzying with vast-tools an RNA-seq dataset with SRRM4 or GFP (as control) ectopically expressed in HEK293 cells.
@@ -198,9 +198,9 @@ perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
       Exons_hg38-2-dPSI50.txt -main_folder hg38_mm10_output/ -print_out
 ```
 This provides us a richer output about the percent of conservation on the gene level:
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/exorthist_tab2_1.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_1.png)
 and on the exon level:
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/exorthist_tab2_2.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_2.png)
 
 Moreover, with option `-print_out` *ExOrthist*  generates a list of orthologous exons, containing *Srrm4*-regulated exons in one or the two species (Conserved_exons-mm10-hg38.tab), with the following format:
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/exorthist_output.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_output.png)
