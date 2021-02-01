@@ -64,7 +64,7 @@ vast-tools compare INCLUSION_LEVELS_FULL-mm10-4.tab \
 
 The summary output confirms a clear tendency: most regulated AS events are cassette exons, especially microexons with length ≤ 27 nt that show higher inclusion in the control (108 vs. 0 for microexons and 52 vs. 9 for longer exons), consistent with the known role of Srrm4 enhancing inclusion of very short exons.  
 
-<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vasttools_compare_output.png" width=700 height=650 />  
+<img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vasttools_compare_output.png" width=700 height=550 />  
 <!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vasttools_compare_output.png) -->
 
 In addition to the summary statistics, the run of ```vast-tools compare``` with the `--GO` and `--print_sets` flags generates the following useful files:  
@@ -100,7 +100,7 @@ To perform a GO enrichment analysis, we upload the two Gene-ID lists generated b
 
 ### 4. *Matt*: Identifying potential genomic and sequence features associated with Srrm4 regulation
 
-We then use *Matt* to identify potential genomic and sequence features associated with Srrm4-regulated exons. We apply *Matt*'s table manipulation commands (add_val, rand_rows, add_rows and get_rows) to prepare the input table containing all the exons to be compared together with the relative group ID (reported in the column GROUP). We exploit ` grep -P "(MmuEX|EVENT)"` to selectively extract exon AS events from the *vast-tools* table, and we randomly down-sample 1000 non-changing, constitutive, and cryptic exons in order to preserve a reasonable dataset size.  
+We then use *Matt* to identify potential genomic and sequence features associated with Srrm4-regulated exons. We apply *Matt*'s table manipulation commands (`add_val`, `rand_rows`, `add_rows` and `get_rows`) to prepare the input table containing all the exons to be compared together with the relative group ID (reported in the column GROUP). We exploit ` grep -P "(MmuEX|EVENT)"` to selectively extract exon AS events from the *vast-tools* table, and we randomly down-sample 1000 non-changing, constitutive, and cryptic exons in order to preserve a reasonable dataset size.  
 
 ```bash
 matt add_val AS_NC-mm10-4-dPSI25-range5-min_ALT_use25-upreg_ALT_Control-vs-Srrm4_KD-with_dPSI-Max_dPSI5.tab GROUP AS_NC \
@@ -173,7 +173,7 @@ Next, we use the disorder information downloaded from *VastDB* and plot the aver
 
 <img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_B.png" width="600" height="500" />  
 <!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_B.png) -->
-However, some Srrm4-regulated microexons are also known to be inserted within structured domains, as exemplified by a 15-nt exon in *Vav2* with VastID [MmuEX0051282](https://vastdb.crg.eu/event/MmuEX0051282@mm10).  
+However, some Srrm4-regulated microexons are also known to be inserted within structured domains, as exemplified by a 15-nt exon in *Vav2* with VastID [MmuEX0051282](https://vastdb.crg.eu/event/MmuEX0051282@mm10)   
 
 ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_C.png)
 
@@ -182,13 +182,13 @@ Finally, we perform a conservation analysis using *ExOrthist*. We run *ExOrthist
 ```bash
 nextflow main.nf
 ```
-`main.nf` needs two config files in the pipeline execution directory. First a [nextflow.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/nextflow.config) file, which is also automatically downloaded during ExOrthist installation and contains the pipeline configuration properties. Second, a [params.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/params.config) file specifying the required parameters for the run, the location of the input files as well as of the output folder (`hg38_mm10_output`, for this example). Among other files of interest, the output folder will include the [EX_clusters.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/EX_clusters.tab.gz) file, which will contain all exon orthogroups within the provided human and mouse gene orthogroups. All the input folder containing all the files to replicate this run can be found [here]().  
+`main.nf` needs two config files in the pipeline execution directory. First a [nextflow.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/nextflow.config) file, which is also automatically downloaded during ExOrthist installation and contains the pipeline configuration properties. Second, a [params.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/params.config) file specifying the required parameters for the run, the location of the input files as well as of the output folder (`hg38_mm10_output`, for this example). Among other files of interest, the output folder will include the [EX_clusters.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/EX_clusters.tab.gz) file, which will contain all exon orthogroups within the provided human and mouse gene orthogroups. The input folder containing all the files to replicate this run can be found [here]().  
 
 Next, we perform two types of analysis with `compare_exon_sets.pl`: 
 1. genome conservation of all identified mouse exon sets (DiffAS, AS_NC, CR, CS) in human.  
 2. genome and regulatory conservation of Srrm4-regulated (DiffAS) exons between human and mouse.  
 
-From the first comparison, using a single list of Srrm4-regulated (DiffAS) exons, we obtain:
+From the first comparison, using a single list of Srrm4-regulated exons, we obtain:
 ```bash
 perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 
      -exon_list_sp1 Exons_mm10-Srrm4_KD.txt \ 
@@ -212,7 +212,8 @@ perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
 
 <img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_fig1.png" width="600" height="500" />    
 <!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_fig1.png) -->
-*Genome conservation between human and mouse for various exon sets.*  
+
+*Genome conservation between human and mouse for various exon sets. *  
 
 To assess the regulatory conservation of *Srrm4*-regulated exons between mouse and human, and identify orthologs exons regulated in both species, we utilized compare_exon_sets.pl for two exon lists. The second list, *SRRM4*-regulated exons in human, was obtained by analyzing with vast-tools a RNA-seq dataset (**SRP149913**) in which *SRRM4* or GFP (as control) were ectopically expressed in HEK293 cells.  
 
@@ -221,9 +222,9 @@ perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
       -exon_list_sp1 Exons_mm10-4-dPSI25.txt -exon_list_sp2 \
       Exons_hg38-2-dPSI50.txt -main_folder hg38_mm10_output/ -print_out
 ```
-This provides us a richer output about the percent of conservation on the gene level:
+This provides us a richer output about the percent of conservation at the gene level:
 ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_1.png)
-and on the exon level:
+and at the exon level:
 ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_2.png)
 
 Moreover, with the option `-print_out`, `compare_exon_sets.pl` generates a text file with all the exon orthogroups (i.e. clusters of conserved exons between human and mouse) containing Srrm4-regulated exons for either one or both species. The format of the output file (`Conserved_exons-mm10-hg38.tab`) is the following:  
