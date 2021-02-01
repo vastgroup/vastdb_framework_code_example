@@ -173,8 +173,9 @@ Next, we use the disorder information downloaded from *VastDB* and plot the aver
 
 <img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_B.png" width="600" height="500" />  
 <!-- ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_B.png) -->
-However, some Srrm4-regulated microexons are also known to be inserted within structured domains, as exemplified by a 15-nt exon in *Vav2* with VastID [MmuEX0051282](https://vastdb.crg.eu/event/MmuEX0051282@mm10)   
+However, some Srrm4-regulated microexons are also known to be inserted within structured domains, as exemplified by a 15-nt exon in *Vav2* with VastID [MmuEX0051282](https://vastdb.crg.eu/event/MmuEX0051282@mm10)  
 
+<!-- -->
 ![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_C.png)
 
 ### 6. Use of *ExOrthist* for conservation analysis of exons
@@ -223,9 +224,9 @@ perl ~/ExOrthist/bin/compare_exon_sets.pl -sp1 mm10 -sp2 hg38 \
       Exons_hg38-2-dPSI50.txt -main_folder hg38_mm10_output/ -print_out
 ```
 This provides us a richer output about the percent of conservation at the gene level:
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_1.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_1.png =600x350)
 and at the exon level:
-![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_2.png)
+![](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/exorthist_tab2_2.png =900x300)
 
 Moreover, with the option `-print_out`, `compare_exon_sets.pl` generates a text file with all the exon orthogroups (i.e. clusters of conserved exons between human and mouse) containing Srrm4-regulated exons for either one or both species. The format of the output file (`Conserved_exons-mm10-hg38.tab`) is the following:  
 
