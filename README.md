@@ -100,7 +100,7 @@ To perform a GO enrichment analysis, we upload the two Gene-ID lists generated b
 
 ### 4. *Matt*: Identifying potential genomic and sequence features associated with Srrm4 regulation
 
-We then use *Matt* to identify potential genomic and sequence features associated with Srrm4-regulated exons. The [mm10.gtf.gz](http://vastdb.crg.eu/FRAMEWORK/mm10.gtf.gz) and [mm10.fasta.gz](http://vastdb.crg.eu/FRAMEWORK/mm10.fasta.gz) files required by this analysis can be downloaded from the relative link.  
+We then use *Matt* to identify potential genomic and sequence features associated with Srrm4-regulated exons. The [mm10.gtf.gz](http://vastdb.crg.eu/FRAMEWORK/mm10.gtf.gz) and [mm10.fasta.gz](http://vastdb.crg.eu/FRAMEWORK/mm10.fasta.gz) files required by this analysis can be downloaded from the relative link. The files need to be uncompressed in order to be used as *Matt*'s input.  
 We first apply *Matt*'s table manipulation commands (`add_val`, `rand_rows`, `add_rows` and `get_rows`) to prepare the input table containing all the exons to be compared together with the relative group ID (reported in the column GROUP). We exploit ` grep -P "(MmuEX|EVENT)"` to selectively extract exon AS events from the *vast-tools* table, and we randomly down-sample 1000 non-changing, constitutive, and cryptic exons in order to preserve a reasonable dataset size.  
 
 ```bash
@@ -184,7 +184,16 @@ Finally, we perform a conservation analysis using *ExOrthist*. We run *ExOrthist
 ```bash
 nextflow main.nf
 ```
-`main.nf` needs two config files in the pipeline execution directory. First a [nextflow.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/nextflow.config) file, which is also automatically downloaded during ExOrthist installation and contains the pipeline configuration properties. Second, a [params.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/params.config) file specifying the required parameters for the run, the location of the input files as well as of the output folder (`hg38_mm10_output`, for this example). Among other files of interest, the output folder will include the [EX_clusters.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/EX_clusters.tab.gz) file, which will contain all exon orthogroups within the provided human and mouse gene orthogroups. The input folder containing all the files to replicate this run can be found [here]().  
+`main.nf` needs two config files in the pipeline execution directory. First a [nextflow.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/nextflow.config) file, which is also automatically downloaded during ExOrthist installation and contains the pipeline configuration properties. Second, a [params.config](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/params.config) file specifying the required parameters for the run, the location of the input files as well as of the output folder (`hg38_mm10_output`, for this example). Among other files of interest, the output folder will include the [EX_clusters.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/EX_clusters.tab.gz) file, which will contain all exon orthogroups within the provided human and mouse gene orthogroups. The following files are necessary to replicate the run, and need to be organized into a `hg38_mm10_inputs` input folder and relative subfolders as specified in the params.config:  
+[evodists.txt](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/evodists.txt)  
+[hg38_mm10_annotated.tab.gz](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/hg38_mm10_annotated.tab.gz)  
+[mm10.gtf.gz](http://vastdb.crg.eu/FRAMEWORK/mm10.gtf.gz)  
+[hg38.gtf.gz](http://vastdb.crg.eu/FRAMEWORK/hg38.gtf.gz)  
+[mm10.fasta.gz](http://vastdb.crg.eu/FRAMEWORK/mm10.fasta.gz)  
+[hg38.fasta.gz](http://vastdb.crg.eu/FRAMEWORK/hg38.fasta.gz)  
+[hg38_extraexons.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/hg38_extraexons.tab.gz)  
+[mm10_extraexons.tab](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/ExOrthist_files/mm10_extraexons.tab.gz)  
+
 
 Next, we perform two types of analysis with `compare_exon_sets.pl`: 
 1. genome conservation of all identified mouse exon sets (DiffAS, AS_NC, CR, CS) in human.  
