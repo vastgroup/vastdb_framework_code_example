@@ -163,8 +163,8 @@ We download two files from *VastDB*:
 We first calculate the ΔPSI between neural and non-neural samples. We use the utility script [Get_Tissue_Specific_AS.pl](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Scripts/Get_Tissue_Specific_AS.pl). This script takes as input a vast-tools INCLUSION table and a config file (a tab-separated table with the tissue group for each sample) and identifies tissue-specific AS events. If the option `--test_tis` is provided as below, it will generate a table with the average ΔPSI between neural and non-neural samples (as specified in the config file) for all AS events with sufficient read coverage for the comparison (at least five replicates in each group; -min_rep 5).
 ```bash
 perl Get_Tissue_Specific_AS.pl PSI_TABLE-mm10.tab.gz \ 
-      -g Config_Neural.txt -min_N 2 \ 
-      -test_tis Neural -min_rep 5
+      -g Config_Neural.txt -N 5 \ 
+      -test_tis Neural -min_rep 2
 ```
 With this information, we plot the ΔPSI per type of exon, which shows a very strong tendency for neurally upregulated exons among Srrm4-regulated exons.  
 <img align="middle" src="https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Figures/vastbd_resources_A.png" width="500" height="500" />  
