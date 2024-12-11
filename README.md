@@ -32,7 +32,7 @@ To quantify *Srrm4* splicing and identify *Srrm4* regulated exons with *vast-too
 ```bash
 matt retr_rnaseq accessions_mouse.txt
 ```
-where [accessions_mouse.txt](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vast-tool_files/accessions_mouse.txt) contains the GEO SRA IDs and sample names.
+where [accessions_mouse.txt](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/vast-tools_files/accessions_mouse.txt) contains the GEO SRA IDs and sample names.
 
 We use vast-tools align to process each RNA-seq sample separately with respect to the mouse mm10 transcriptome and specifying `vast_out/mm10/MMB` as the central output directory
 ```bash
