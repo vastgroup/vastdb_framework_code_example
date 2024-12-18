@@ -59,7 +59,7 @@ vast-tools compare INCLUSION_LEVELS_FULL-mm10-4.tab \
    -b CL_N2A_Srrm4_KD_a,CL_N2A_Srrm4_KD_b \ 
    --print_dPSI --GO -sp mm10 --print_sets \ 
    --min_dPSI 25 --min_range 5 \
-   -name_A Control -name_B Srrm4_KD \
+   -name_A Control -name_B Srrm4_KD
 ```
 
 The summary output confirms a clear tendency: most regulated AS events are cassette exons, especially microexons with length ≤ 27 nt that show higher inclusion in the control (108 vs. 0 for microexons and 52 vs. 9 for longer exons), consistent with the known role of Srrm4 enhancing inclusion of very short exons.  
