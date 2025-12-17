@@ -159,7 +159,9 @@ where 15 is the length of the sliding window, 50 and 150 are the number of exon 
 ### 5. Use of *VastDB* resources to identify tissue specific AS events
 We download two files from *VastDB*: 
 1. [PSI_TABLE-mm10.tab.gz](https://vastdb.crg.eu/downloads/mm10/PSI_TABLE-mm10.tab.gz) containing the PSIs across the main sample panel for each AS event.  
-2. [PROT_DISORDER-mm10.tab.gz](https://vastdb.crg.eu/downloads/mm10/PROT_DISORDER-mm10.tab.gz) with the overlap with disordered regions for each AS event.  
+2. [PROT_DISORDER-mm10.tab.gz](https://vastdb.crg.eu/downloads/mm10/PROT_DISORDER-mm10.tab.gz) with the overlap with disordered regions for each AS event.
+
+   
 We first calculate the ΔPSI between neural and non-neural samples. We use the utility script [Get_Tissue_Specific_AS.pl](https://github.com/vastgroup/vastdb_framework_code_example/blob/main/Scripts/Get_Tissue_Specific_AS.pl). This script takes as input a vast-tools INCLUSION table and a config file (a tab-separated table with the tissue group for each sample) and identifies tissue-specific AS events. If the option `--test_tis` is provided as below, it will generate a table with the average ΔPSI between neural and non-neural samples (as specified in the config file) for all AS events with sufficient read coverage for the comparison (at least five replicates in each group; -min_rep 5).
 ```bash
 perl Get_Tissue_Specific_AS.pl PSI_TABLE-mm10.tab.gz \ 
