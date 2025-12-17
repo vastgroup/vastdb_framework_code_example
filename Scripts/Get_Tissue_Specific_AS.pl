@@ -188,7 +188,7 @@ while (<I>){
     my $type="";
     $type="IR" if $t[5]=~/IR/;
     $type=$t[5] if $t[5]=~/Alt/;
-    $type="AltEX" if $t[1]=~/EX/;
+    $type="EX" if $t[1]=~/EX/;
     $type="BS" if $t[5]=~/BS/; # future circRNAs
     
 #    next if ($t[3]!=0 && $t[5]=~/Alt/); # only the shorter version (i.e. 1 per Alt event)
